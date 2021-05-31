@@ -1,0 +1,86 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <ng-container *ngIf="cartItems.length > 0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="20%">Imagen del producto</th>
+                        <th width="50%">Detalles del producto</th>
+                        <th width="30%"></th>
+                    </tr>
+                    <tr *ngFor="let tempCartItem of cartItems">
+                        <td>
+                            <img
+                                src="{{ tempCartItem.imageUrl }}"
+                                alt="{{ tempCartItem.name }}"
+                                class="img-responsive"
+                                width="150px"
+                            />
+                        </td>
+                        <td>
+                            <p>{{ tempCartItem.name }}</p>
+                            <p>{{ tempCartItem.unitPrice | currency: 'USD' }}</p>
+                        </td>
+                        <td>
+                            <div class="items">
+                                <label> Cantidad: </label>
+                                <div class="row no-gutters">
+                                    <div class="col">
+                                        <button
+                                            (click)="incrementQuantity(tempCartItem)"
+                                            type="button"
+                                            class="btn btn-primary btn-sm"
+                                        >
+                                            <i class="fas fa-plus"> </i>
+                                        </button>
+                                    </div>
+                                    <div class="col ml-4 mr-2">
+                                        {{ tempCartItem.quantity }}
+                                    </div>
+                                    <div class="col">
+                                        <button
+                                            (click)="decrementQuantity(tempCartItem)"
+                                            type="button"
+                                            class="btn btn-primary btn-sm"
+                                        >
+                                            <i class="fas fa-minus"> </i>
+                                        </button>
+                                    </div>
+                                    <div class="col-3"></div>
+                                </div>
+                            </div>
+
+                            <button
+                                (click)="remove(tempCartItem)"
+                                type="button"
+                                class="btn btn-primary btn-sm mt-2"
+                            >
+                                Eliminar
+                            </button>
+
+                            <p class="mt-2">
+                                Sub Total:
+                                {{
+                                    tempCartItem.quantity * tempCartItem.unitPrice | currency: 'USD'
+                                }}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td style="font-weight: bold">
+                            <p>Cantidad Total: {{ totalQuantity }}</p>
+                            <p>Envio gratuito: FREE</p>
+                            <p>Precio total: {{ totalPrice | currency: 'USD' }}</p>
+                        </td>
+                    </tr>
+                </table>
+            </ng-container>
+
+            <!--  -->
+            <div *ngIf="cartItems.length === 0" class="alert alert-warning col-md-12" role="alert">
+                Tu carrito esta vacio, por favor agregue algun producto
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,9 +12,10 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, SearchComponent, ProductDetailsComponent, CartStatusComponent],
+  declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, SearchComponent, ProductDetailsComponent, CartStatusComponent, CartDetailsComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, NgbModule, BrowserAnimationsModule ],
   providers: [ProductService],
 

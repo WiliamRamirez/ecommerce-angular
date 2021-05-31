@@ -32,7 +32,7 @@ export class CartService {
         this.computeCartTotals();
     }
 
-    computeCartTotals() {
+    computeCartTotals(): void {
         let totalPriceValue = 0;
         let totalQuantityValue = 0;
 
@@ -50,6 +50,26 @@ export class CartService {
     logCartData(totalPriceValue: number, totalQuantityValue: number) {
         for (const tempCarItem of this.carItems) {
             const subTotalPrice = tempCarItem.quantity * tempCarItem.unitPrice;
+        }
+    }
+
+    decrementQuantity(theCartItem: CartItem): void {
+        theCartItem.quantity--;
+        if (theCartItem.quantity === 0) {
+            this.remove(theCartItem);
+        } else {
+            this.computeCartTotals();
+        }
+    }
+
+    remove(theCartItem: CartItem): void {
+        const itemIndex = this.carItems.findIndex(
+            (tempCartItem) => tempCartItem.id === theCartItem.id
+        );
+
+        if (itemIndex > -1) {
+            this.carItems.splice(itemIndex, 1);
+            this.computeCartTotals();
         }
     }
 }
