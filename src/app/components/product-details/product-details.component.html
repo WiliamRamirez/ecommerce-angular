@@ -5,7 +5,9 @@
         <div class="price">
             {{ product.unitPrice | currency: 'USD' }}
         </div>
-        <a href="" class="primary-btn"> Agregar al carrito </a>
+        <button (click)="addToCart()" type="button" class="btn btn-primary btn-sm">
+            Agregar al carrito
+        </button>
         <hr />
         <h4>Descripcion</h4>
         <p>{{ product.description }}</p>

@@ -10,10 +10,12 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, SearchComponent, ProductDetailsComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, NgbModule ],
+  declarations: [AppComponent, ProductListComponent, ProductCategoryMenuComponent, SearchComponent, ProductDetailsComponent, CartStatusComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, NgbModule, BrowserAnimationsModule ],
   providers: [ProductService],
 
   bootstrap: [AppComponent],
